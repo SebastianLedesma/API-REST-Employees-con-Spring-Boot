@@ -2,11 +2,14 @@ package com.apirest.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="employees")
@@ -18,9 +21,17 @@ public class Employee implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	
+	@NotEmpty
+	@Size(min=4,max=15)
+	@Column(nullable=false)
 	private String name;
+	
+	@Column(nullable=false)
 	private Double salary;
+	
+	@NotEmpty
+	@Size(min=4,max=15)
+	@Column(nullable=false)
 	private String role;
 	
 	
